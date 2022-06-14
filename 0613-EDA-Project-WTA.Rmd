@@ -141,6 +141,54 @@ wta <- wta%>%
 ```
 
 
+```{r}
+#Phong method
+
+new_wta <- data.frame()
+for (i in seq(1, nrow(wta))) {
+  
+  wta_match <- data.frame(matrix(ncol = 30, nrow = 2))
+  wta_match[1:2, 1:7] <-  wta[i,1:7]
+  wta_match[1:2, 8:11] <- wta[i, 24:27]
+  wta_match[1, 12:19] <- wta[i, 8:15]
+  wta_match[1, 20:28] <- wta[i, 28:36]
+  wta_match[1, 29:30] <- wta[i, 46:47]
+  wta_match[2, 12:19] <- wta[i, 16:23]
+  wta_match[2, 20:28] <- wta[i, 37:45]
+  wta_match[2, 29:30] <- wta[i, 48:49]
+  new_wta <- bind_rows(new_wta, wta_match)
+}
+
+duplicate_match%>%
+  count(tourney_id)
+
+new_wta%>%
+  count(tourney_id)
+
+wta_match2 <- data.frame(matrix(30,2))
+
+wta_match[1:2, 1:7] <-  wta[12,1:7]
+  wta_match[1:2, 8:11] <- wta[16, 24:27]
+  wta_match[1, 12:19] <- wta[16, 8:15]
+  wta_match[1, 20:28] <- wta[16, 28:36]
+  wta_match[1, 29:30] <- wta[16, 46:47]
+  wta_match[2, 12:19] <- wta[16, 16:23]
+  wta_match[2, 20:28] <- wta[16, 37:45]
+  wta_match[2, 29:30] <- wta[16, 48:49]
+```
+
+```{r}
+i <- 1
+wta_match <- data.frame(matrix(30,2))
+  wta_match[1:2, 1:7] <-  wta[i,1:7]
+  wta_match[1:2, 8:11] <- wta[i, 24:27]
+  wta_match[1, 12:19] <- wta[i, 8:15]
+  wta_match[1, 20:28] <- wta[i, 28:36]
+  wta_match[1, 29:30] <- wta[i, 46:47]
+  wta_match[2, 12:19] <- wta[i, 16:23]
+  wta_match[2, 20:28] <- wta[i, 37:45]
+  wta_match[2, 29:30] <- wta[i, 48:49]
+```
 
 ```{r Initial Exploration}
 wta%>%
@@ -177,6 +225,77 @@ wta%>%
 wta%>%
   group_by(tourney_id, player)%>%
   summarize(count = n())
+
+
+```
+
+
+## Creating dataset where each observation is one player's performance in a match (i.e 2 rows per match)
+```{r}
+
+#Create dataset where essentially all rows are duplicated, add result column
+duplicate_match <- wta%>%
+  pivot_longer(c(11,19), names_to = "result", values_to = "player_name")%>%
+  mutate(result = ifelse(result == "winner_name", "W", "L"))
+
+# Create losers dataset, rename appropriate columns
+losers <- duplicate_match%>%
+  filter(result == "L")%>%
+  select(1:7, 15:25, 35:43, 46:49)%>%
+  rename(id = "loser_id",
+         seed = "loser_seed",
+         entry = "loser_entry",
+         hand = "loser_hand",
+         ht = "loser_ht",
+         ioc = "loser_ioc",
+         age = "loser_age",
+         ace = "l_ace",
+         df = "l_df",
+         svpt = "l_svpt",
+         first_in = "l_1stIn",
+         first_won = "l_1stWon",
+         second_won = "l_2ndWon",
+         SvGms = "l_SvGms",
+         bpSaved = "l_bpSaved",
+         bpFaced = "l_bpFaced",
+         rank = "loser_rank",
+         rank_points = "loser_rank_points")%>%
+    #Create match_id to have ordering same as in duplicate_match
+  mutate(seed = parse_number(seed), # Some seeds had characters, get rid of those
+         match_id = seq(1:(nrow(duplicate_match)/2)))
+
+
+# Create winners dataset, rename appropriate columns
+winners <- duplicate_match%>%
+  filter(result == "W")%>%
+  select(1:7, 8:14, 22:25, 26:34, 44:45, 48:49)%>%
+  rename(id = "winner_id",
+         seed = "winner_seed",
+         entry = "winner_entry",
+         hand = "winner_hand",
+         ht = "winner_ht",
+         ioc = "winner_ioc",
+         age = "winner_age",
+         ace = "w_ace",
+         df = "w_df",
+         svpt = "w_svpt",
+         first_in = "w_1stIn",
+         first_won = "w_1stWon",
+         second_won = "w_2ndWon",
+         SvGms = "w_SvGms",
+         bpSaved = "w_bpSaved",
+         bpFaced = "w_bpFaced",
+         rank = "winner_rank",
+         rank_points = "winner_rank_points")%>%
+  #Create match_id to have ordering same as in duplicate_match
+  mutate(match_id = seq(1:(nrow(duplicate_match)/2)))
+
+
+# Join winners and losers which now have equal column names
+indiv_player_match <- bind_rows(winners, losers)%>%
+  arrange(match_id)
+
+
 ```
 
 
