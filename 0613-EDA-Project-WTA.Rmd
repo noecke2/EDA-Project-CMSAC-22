@@ -201,7 +201,7 @@ wta%>%
 
 1. How does a player's proportion of break points saved relate to their winning percentage?
   - Could be a clustering problem too
-  - Player's who have a better break point saved percentage will generally have a better winning percentage, but players who are facing more break points are also facing more breaks. 
+  - Player's who have a better break point saved percentage will generally have a better winning percentage, but players who are facing more break points could be losing more games overall. 
   - Could also break down by surface
   - If you're consistently saving break points, we hypothesize that you're not facing break points that often
   
@@ -289,9 +289,11 @@ winners <- duplicate_match%>%
 indiv_player_match <- bind_rows(winners, losers)%>%
   arrange(match_id)
 
-# Creating variable that counts # of sets
+# Creating variable that counts # of sets and # of second serves in
 indiv_player_match <- indiv_player_match%>%
-  mutate(sets = str_count(score, "-"))
+  mutate(sets = str_count(score, "-"),
+         # second serves in = service points - first serves in - double faults
+         second_in = svpt - first_in - df) 
 
 # How many players are we working with? ~726
 indiv_player_match %>%
@@ -302,9 +304,91 @@ indiv_player_match %>%
 ## Create dataset where each row is a player's cumulative performance
 
 ```{r}
+player_match_count <- (indiv_player_match%>%
+  count(player_name))[[2]]
+  
+  
 indiv_player_match%>%
   group_by(player_name)%>%
-  summarize_at(vars(age, 18:27, 32), mean, na.rm = TRUE)
+  summarize_at(vars(age, 18:27, 32), mean, na.rm = TRUE)%>%
+  mutate(matches = player_match_count)
+
+
+
+```
+
+
+```{r}
+# Individual match break points
+
+bp_stats <- indiv_player_match%>%
+  mutate(win = ifelse(result == "W", 1, 0))%>%
+  group_by(player_name)%>%
+  summarize(matches = n(),
+            wins = sum(win, na.rm = TRUE),
+            sum_faced = sum(bpFaced, na.rm = TRUE),
+            sum_saved = sum(bpSaved, na.rm = TRUE),
+            mean_faced = mean(bpFaced, na.rm = TRUE),
+            mean_saved = mean(bpSaved, na.rm = TRUE))%>%
+  mutate(prop_saved = sum_saved / sum_faced,
+         win_pct = wins / matches)
+
+
+bp_stats%>%
+  ggplot(aes(x = sum_faced))+
+  geom_histogram(binwidth = 25)+
+  theme_bw()
+
+
+
+bp_stats%>%
+  ggplot(aes(x = matches, y = sum_faced))+
+  geom_point(alpha = 0.5)
+
+
+bp_stats%>%
+  filter(matches >= 50)%>%
+  ggplot(aes(x = prop_saved, y = win_pct))+
+  geom_point(aes(color = mean_faced),alpha = 0.75, size = 4)+
+  scale_color_gradient(low = "darkorange", high = "darkblue")+
+  theme_bw()+
+  labs(x = "Proportion of Break Points Saved",
+       y = "Winning Percentage",
+       color = "Average Break Points Faced",
+       title = "Winning players face fewer break points and save break points at better rates")+
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+bp_stats%>%
+  filter(matches >= 50)%>%
+  ggplot(aes(x = prop_saved, y = mean_faced))+
+  geom_point(alpha = 0.5, size = 3)
+# There aren't really any player who are anomalies in that 
+# they face a bunch of break points and save at a high percentage
+# No one is really in the top right corner
+
+```
+
+
+
+## Hypothesis 2
+
+```{r}
+player_match_count <- (indiv_player_match%>%
+  count(player_name, surface))[[3]]
+
+testing <- indiv_player_match%>%
+  group_by(player_name, surface)%>%
+  summarize_at(vars(ace, df, svpt, first_in, first_won, second_in, second_won), sum, na.rm = TRUE)%>%
+  ungroup()%>%
+  mutate(matches_played = player_match_count,
+         first_won_pct = first_won / first_in,
+         second_in_won_pct = second_won / second_in,
+         second_won_pct = second_won / (second_in + df))
+
+sum(testing$first_won) / sum(testing$first_in)
+sum(testing$second_won) / (sum(testing$second_in) + sum(testing$df))
+
 ```
 
 
