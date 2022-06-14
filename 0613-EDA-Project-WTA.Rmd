@@ -136,12 +136,6 @@ wta <- read_csv("http://www.stat.cmu.edu/cmsac/sure/2022/materials/data/sports/e
 - How to handle when someone retires? Filter them out?
 
 ```{r}
-wta <- wta%>%
-  mutate(sets = str_count(score, "-"))
-```
-
-
-```{r}
 #Phong method
 
 new_wta <- data.frame()
@@ -295,8 +289,24 @@ winners <- duplicate_match%>%
 indiv_player_match <- bind_rows(winners, losers)%>%
   arrange(match_id)
 
+# Creating variable that counts # of sets
+indiv_player_match <- indiv_player_match%>%
+  mutate(sets = str_count(score, "-"))
 
+# How many players are we working with? ~726
+indiv_player_match %>%
+  count(player_name, sort = TRUE)
 ```
+
+
+## Create dataset where each row is a player's cumulative performance
+
+```{r}
+indiv_player_match%>%
+  group_by(player_name)%>%
+  summarize_at(vars(age, 18:27, 32), mean, na.rm = TRUE)
+```
+
 
 
 
