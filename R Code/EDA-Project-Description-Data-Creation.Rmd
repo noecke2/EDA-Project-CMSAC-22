@@ -355,7 +355,8 @@ bp_stats%>%
   labs(x = "Proportion of Break Points Saved",
        y = "Winning Percentage",
        color = "Average Break Points Faced",
-       title = "Winning players face fewer break points and save break points at better rates")+
+       title = "Winning players face fewer break points and save break points at better rates",
+       caption = "Minimum 50 matches played")+
   theme(plot.title = element_text(hjust = 0.5))
 
 

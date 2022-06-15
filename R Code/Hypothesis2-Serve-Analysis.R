@@ -26,7 +26,7 @@ player_match_count <- (indiv_player_match%>%
 
 player_serve_stats <- indiv_player_match%>%
   group_by(player_name)%>%
-  summarize_at(vars(ace, df, svpt, first_in, first_won, second_in, second_won), sum, na.rm = TRUE)%>%
+  summarize_at(vars(sets, ace, df, svpt, first_in, first_won, second_in, second_won), sum, na.rm = TRUE)%>%
   ungroup()%>%
   mutate(matches_played = player_match_count,
          first_won_pct = first_won / first_in,
