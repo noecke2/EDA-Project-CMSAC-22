@@ -106,3 +106,9 @@ surface_serve_stats%>%
   geom_bar(position = "dodge", stat = "identity")
   
 
+# CDF of first and second serves won
+surface_serve_stats%>%
+  pivot_longer(c(10, 12))%>%
+  ggplot(aes(x = value, color = name))+
+  stat_ecdf()
+

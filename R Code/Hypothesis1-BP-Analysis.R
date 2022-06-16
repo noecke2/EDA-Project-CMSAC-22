@@ -50,8 +50,7 @@ p1 <- bp_stats%>%
        title = "Winning players face fewer break points\n
        and save break points at better rates",
        caption = "Minimum 50 matches played")+
-  theme(plot.title = element_text(hjust = 0.5),
-        legend.position = "none")
+  theme(plot.title = element_text(hjust = 0.5))
 
 # With players who played < 50 matches
 p2 <- bp_stats%>%
@@ -68,6 +67,9 @@ p2 <- bp_stats%>%
        caption = "Between 5 & 50 matches played")+
   theme(plot.title = element_text(hjust = 0.5),
         legend.position =c(0.8, 0.2))
+
+p1
+p2
 
 cowplot::plot_grid(p1, p2, labels = "AUTO")
 

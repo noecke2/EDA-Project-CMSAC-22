@@ -52,9 +52,9 @@ indiv_player_match%>%
   select(1:4, minutes)
 
 
+# Recategorize the minute difference for plot
 
-
-test <- final_minutes%>%
+final_minutes <- final_minutes%>%
   mutate(winner_adv = ifelse(winner_tot_minutes < loser_tot_minutes, 1, 0),
          adv_category = ifelse(abs_minute_diff < 50, "0-49", "150+"),
          adv_category = ifelse(abs_minute_diff < 100 & abs_minute_diff >= 50,
@@ -67,15 +67,25 @@ test <- final_minutes%>%
                                     "100-149",
                                     "150+"))
 
-test%>%
-  ggplot(aes(x = adv_category, fill = as.factor(winner_adv)))+
-  geom_bar(position = "dodge")
 
+# Official Visualization for Hypothesis 3 ---------------------------------
 
-test%>%
-  filter(abs_minute_diff <= 500)%>%
-  ggplot(aes(x = abs_minute_diff))+
-  stat_ecdf()
+# Still need a title / takeaway - wording is tough
+
+final_minutes%>%
+  mutate(winner_adv = as.factor(winner_adv),
+         winner_adv = ifelse(winner_adv == "1", 
+                             "Minute Advantage", 
+                             "Minute Disadvantage"))%>%
+  ggplot(aes(x = adv_category, fill = winner_adv))+
+  geom_bar(position = "dodge")+
+  theme_bw()+
+  labs(fill = "Winner Type",
+       x = "Minute Gap",
+       y = "Number of Final Matches",
+       title = "Need to develop a title here")+
+  theme(legend.position = "right",
+        legend.title = element_text(face = "bold"))
 
 
 
