@@ -319,7 +319,7 @@ indiv_player_match%>%
 
 
 ```{r}
-# Individual match break points
+# Individual match break points - Hypothesis 1
 
 bp_stats <- indiv_player_match%>%
   mutate(win = ifelse(result == "W", 1, 0))%>%
