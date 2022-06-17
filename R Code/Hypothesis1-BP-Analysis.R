@@ -2,9 +2,13 @@
 
 ### RQ1 - How does a player's proportion of break points saved relate to their winning percentage?
 
+### Hypothesis 1 - Players who have a better break point saved percentage will have a better winning percentage, but who face more break points (even if they save a good percentage of them) will have worse winning percentages because they're often in danger of losing games where they are serving
+
+
 # Load in data
+
 library(tidyverse)
-# library(patchwork)
+library(patchwork)
 library(cowplot)
 wta <- read_csv("Data/wta.csv")
 duplicate_match <- read_csv("Data/duplicate_match_wta.csv")

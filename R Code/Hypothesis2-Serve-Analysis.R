@@ -1,15 +1,7 @@
 # PURPOSE: Explore Hypothesis 2 of EDA Project
 
 
-
-# Load in Data & Libraries ------------------------------------------------
-
-library(tidyverse)
-wta <- read_csv("Data/wta.csv")
-duplicate_match <- read_csv("Data/duplicate_match_wta.csv")
-indiv_player_match <- read_csv("Data/indiv_player_match_wta.csv")
-
-## Hypothesis 2
+## Hypothesis 2 / Research Question 2
 
 #  How does a player's point winning percentage change when they commit a 
 #  fault on their serve? How does the probability change given they got their second serve in?
@@ -18,6 +10,15 @@ indiv_player_match <- read_csv("Data/indiv_player_match_wta.csv")
 # Even given their second serve is in, percentage will still decrease due to safer serve
 
 # Still deciding what final visual will be used
+
+
+
+# Load in Data & Libraries ------------------------------------------------
+
+library(tidyverse)
+wta <- read_csv("Data/wta.csv")
+duplicate_match <- read_csv("Data/duplicate_match_wta.csv")
+indiv_player_match <- read_csv("Data/indiv_player_match_wta.csv")
 
 # Creating Dataset Aggregating Serve Statistics ---------------------------
 

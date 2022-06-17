@@ -1,5 +1,7 @@
 # Purpose: Answer Question 3 for EDA Project
 
+# RQ3: Do players who have played less minutes leading up to a tournament final than their opponent see improved success in the final?
+
 
 library(tidyverse)
 wta <- read_csv("Data/wta.csv")
