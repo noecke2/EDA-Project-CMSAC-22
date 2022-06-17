@@ -17,6 +17,8 @@ indiv_player_match <- read_csv("Data/indiv_player_match_wta.csv")
 # Will definitely decrease overall when fault on first serve
 # Even given their second serve is in, percentage will still decrease due to safer serve
 
+# Still deciding what final visual will be used
+
 # Creating Dataset Aggregating Serve Statistics ---------------------------
 
 

@@ -13,6 +13,7 @@ indiv_player_match <- read_csv("Data/indiv_player_match_wta.csv")
 
 # Individual match break points - Hypothesis 1
 
+# Creating break points dataset
 bp_stats <- indiv_player_match%>%
   mutate(win = ifelse(result == "W", 1, 0))%>%
   group_by(player_name)%>%
@@ -37,7 +38,7 @@ bp_stats%>%
   ggplot(aes(x = matches, y = sum_faced))+
   geom_point(alpha = 0.5)
 
-# With players who played > 50 matches
+# With players who played > 50 matches - for now our main visual
 p1 <- bp_stats%>%
   filter(matches >= 50)%>%
   ggplot(aes(x = prop_saved, y = win_pct))+
@@ -47,10 +48,11 @@ p1 <- bp_stats%>%
   labs(x = "Proportion of Break Points Saved",
        y = "Winning Percentage",
        color = "Average Break Points Faced",
-       title = "Winning players face fewer break points\n
-       and save break points at better rates",
+       title = "Winning players face fewer break points and save break points at better rates",
        caption = "Minimum 50 matches played")+
   theme(plot.title = element_text(hjust = 0.5))
+
+
 
 # With players who played < 50 matches
 p2 <- bp_stats%>%
@@ -68,8 +70,11 @@ p2 <- bp_stats%>%
   theme(plot.title = element_text(hjust = 0.5),
         legend.position =c(0.8, 0.2))
 
+
 p1
 p2
+
+# Trying to combine these two plots in some way to show disparity between players with more than 50 matches and players with less than 50 matches
 
 cowplot::plot_grid(p1, p2, labels = "AUTO")
 

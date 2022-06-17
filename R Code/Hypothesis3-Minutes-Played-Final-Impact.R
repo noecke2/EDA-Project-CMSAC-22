@@ -79,13 +79,19 @@ final_minutes%>%
                              "Minute Disadvantage"))%>%
   ggplot(aes(x = adv_category, fill = winner_adv))+
   geom_bar(position = "dodge")+
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05)))+
+  # ggthemes::scale_fill_colorblind()+
+  scale_fill_manual(values = c("darkblue", "darkorange"))+
   theme_bw()+
   labs(fill = "Winner Type",
-       x = "Minute Gap",
+       x = "Minute Difference",
        y = "Number of Final Matches",
        title = "Need to develop a title here")+
   theme(legend.position = "right",
-        legend.title = element_text(face = "bold"))
+        legend.title = element_text(face = "bold"),
+        panel.grid.minor = element_blank(),
+        plot.title = element_text(hjust = 0.5),
+        axis.ticks.x = element_blank())
 
 
 
