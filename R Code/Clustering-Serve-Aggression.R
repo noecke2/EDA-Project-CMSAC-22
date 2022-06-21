@@ -36,6 +36,9 @@ player_serve_stats <- indiv_player_match%>%
          df_match = df / matches_played)
 
 
+# write_csv(player_serve_stats, "Data/player_serve_stats.csv")
+
+
 player_serve_stats %>%
   filter(matches_played >= 50)%>%
   ggplot(aes(x = aces_match, y = df_match))+
