@@ -90,12 +90,27 @@ wta%>%
 
   2. `player_serve_stats`: aggregated data of each player's cumulative statistics across all matches
 
+--
+
+  3. `final_minutes`: contains each tournament finalist and the minutes played prior to the final
+  
+--
+
+- New Variables:
+  
+  - Number of sets
+  
+  - Winning Percentage
+  
+  - Minutes played leading up to a tournament final
+  
+  - Difference in minutes played between the two finalists prior to the final 
 
 ---
 
-## Break Points (CHANGE TITLE)
+## <center> Winning players face fewer break points and save break points at better rates </center>
 
-```{r, echo = FALSE, fig.height = 4.5}
+```{r, echo = FALSE, fig.height = 4}
 bp_stats <- indiv_player_match%>%
   mutate(win = ifelse(result == "W", 1, 0))%>%
   group_by(player_name)%>%
@@ -119,13 +134,114 @@ p1 <- bp_stats%>%
        color = "Average Break\nPoints Faced",
        # title = "Winning players face fewer break points and save break points at better rates",
        caption = "Minimum 50 matches played")+
-  theme(plot.title = element_text(hjust = 0.5))
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.caption.position = "plot")
 
 p1
 ```
 
 
 ---
+
+## <center> Both minimax and complete linkage clustering were performed to analyze serve aggression </center>
+
+* Variables of interest were **aces** and **double faults**
+
+* Minimum of 50 matches required
+
+
+
+---
+### There are few elite players who have high aces and low double faults
+
+```{r, echo = FALSE, fig.height = 4}
+player_serve_stats_filtered <- player_serve_stats %>%
+  filter(matches_played >= 50) %>%
+  mutate(std_aces_match = as.numeric(scale(aces_match)),
+         # Standardizing aces and dfs
+         std_df_match = as.numeric(scale(df_match))) 
+
+wta_player_dist <- dist(dplyr::select(player_serve_stats_filtered, std_aces_match, std_df_match))
+
+wta_complete_hclust <- 
+  hclust(wta_player_dist, method = "complete")
+
+clusters_stats <- player_serve_stats_filtered %>%
+  mutate(player_clusters = 
+           as.factor(cutree(wta_complete_hclust, k = 4)))
+
+
+# Key players to label in graph
+key_players <- clusters_stats %>%
+  filter(player_name %in% c("Serena Williams", 
+                            "Maria Sharapova", 
+                            "Naomi Osaka",
+                            "Venus Williams"))
+
+clusters_stats %>%
+  select(player_name, contains("match"), player_clusters) %>%
+  ggplot(aes(x = aces_match, y = df_match, color = player_clusters))+
+  geom_point(alpha = 0.5, size = 3)+
+  geom_label(data = key_players, aes(label = player_name), size = 3)+
+  ggthemes::scale_color_colorblind()+
+  theme_bw()+
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5))+
+  labs(x = "Aces per Match",
+       y = "Double Faults per Match",
+       color = "Player Cluster",
+       # title = "Complete Linkage Clustering Players Based on Aces and Double Faults",
+       caption = "Minimum 50 matches played"
+       #subtitle = "There are few elite players who have high aces and low double faults",
+       )
+
+
+```
+
+---
+
+## <center>Minimax Clustering Reveals a Much Larger Cluster of the Weakest Players</center>
+
+```{r, echo = FALSE, fig.height = 4}
+
+wta_minimax <-
+  protoclust(wta_player_dist)
+
+# Add in clusters to dataset
+
+minimax_wta_player_clusters <- protocut(wta_minimax, k = 4)
+
+clusters_stats_minimax <- player_serve_stats_filtered %>%
+  mutate(player_clusters = 
+           as.factor(minimax_wta_player_clusters$cl))
+
+
+# Protos only dataset
+wta_protos <- clusters_stats_minimax%>%
+  slice(minimax_wta_player_clusters$protos)
+
+# Clusters plotted with protos
+clusters_stats_minimax%>%
+  select(player_name, contains("match"), player_clusters)%>%
+  ggplot(aes(x = aces_match, y = df_match, color = player_clusters))+
+  geom_point(alpha = 0.5, size = 3)+
+  geom_label(data = wta_protos, aes(label = player_name), size = 3)+
+  ggthemes::scale_color_colorblind()+
+  theme_bw()+
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5))+
+  labs(x = "Aces per Match",
+       y = "Double Faults per Match",
+       color = "Player Cluster",
+       # title = "Minimax Clustering Players Based on Aces and Double Faults",
+       # subtitle = "There are few elite players who have high aces and low double faults",
+       caption = "Minimax Clustering: Labeled\nplayers are cluster prototypes")
+
+```
+
+---
+
 
 Text can be **bold**, _italic_, ~~strikethrough~~, or `inline code`.
 
