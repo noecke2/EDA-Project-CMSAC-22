@@ -1,22 +1,11 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Exploratory Data Analysis of WTA Matches</title>
+    <title>Exploring Service Statistics and Effect of Fatigue in WTA Data</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Andrew Noecker" />
-    <meta name="author" content="Mykalyster Homberg" />
-    <meta name="author" content="Phong Hoang" />
-    <meta name="date" content="2022-06-21" />
+    <meta name="author" content="Andrew Noecker, Mykalyster Homberg, Phong Hoang" />
+    <meta name="date" content="2022-06-23" />
     <script src="EDA-Presentation-WTA_files/header-attrs/header-attrs.js"></script>
-    <script src="EDA-Presentation-WTA_files/htmlwidgets/htmlwidgets.js"></script>
-    <link href="EDA-Presentation-WTA_files/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
-    <script src="EDA-Presentation-WTA_files/datatables-binding/datatables.js"></script>
-    <script src="EDA-Presentation-WTA_files/jquery/jquery-3.6.0.min.js"></script>
-    <link href="EDA-Presentation-WTA_files/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
-    <link href="EDA-Presentation-WTA_files/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
-    <script src="EDA-Presentation-WTA_files/dt-core/js/jquery.dataTables.min.js"></script>
-    <link href="EDA-Presentation-WTA_files/crosstalk/css/crosstalk.min.css" rel="stylesheet" />
-    <script src="EDA-Presentation-WTA_files/crosstalk/js/crosstalk.min.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
@@ -24,19 +13,13 @@
 class: center, middle, inverse, title-slide
 
 .title[
-# Exploratory Data Analysis of WTA Matches
+# Exploring Service Statistics and Effect of Fatigue in WTA Data
 ]
 .author[
-### Andrew Noecker
-]
-.author[
-### Mykalyster Homberg
-]
-.author[
-### Phong Hoang
+### Andrew Noecker, Mykalyster Homberg, Phong Hoang
 ]
 .date[
-### 2022-06-21
+### 2022-06-23
 ]
 
 ---
@@ -51,7 +34,7 @@ class: center, middle, inverse, title-slide
 
 ## The Women's Tennis Association (WTA) Dataset
 
-- **49 variables from 10,701 observations**
+- **10,701 observations of 49 variables**
   - Courtesy of [Jeff Sackmann's tennis repository](https://github.com/JeffSackmann/tennis_wta)
   - One observation = one match between **2018** and **2022**
 
@@ -62,12 +45,12 @@ class: center, middle, inverse, title-slide
 
 &lt;!-- - **Key match variables**: tourney_name, tourney_date, surface --&gt;
 
-<div id="rkpaikqsvc" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="wpberopepe" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#rkpaikqsvc .gt_table {
+#wpberopepe .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -92,7 +75,7 @@ class: center, middle, inverse, title-slide
   border-left-color: #D3D3D3;
 }
 
-#rkpaikqsvc .gt_heading {
+#wpberopepe .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -104,7 +87,7 @@ class: center, middle, inverse, title-slide
   border-right-color: #D3D3D3;
 }
 
-#rkpaikqsvc .gt_title {
+#wpberopepe .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -116,7 +99,7 @@ class: center, middle, inverse, title-slide
   border-bottom-width: 0;
 }
 
-#rkpaikqsvc .gt_subtitle {
+#wpberopepe .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -128,13 +111,13 @@ class: center, middle, inverse, title-slide
   border-top-width: 0;
 }
 
-#rkpaikqsvc .gt_bottom_border {
+#wpberopepe .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rkpaikqsvc .gt_col_headings {
+#wpberopepe .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -149,7 +132,7 @@ class: center, middle, inverse, title-slide
   border-right-color: #D3D3D3;
 }
 
-#rkpaikqsvc .gt_col_heading {
+#wpberopepe .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -169,7 +152,7 @@ class: center, middle, inverse, title-slide
   overflow-x: hidden;
 }
 
-#rkpaikqsvc .gt_column_spanner_outer {
+#wpberopepe .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -181,15 +164,15 @@ class: center, middle, inverse, title-slide
   padding-right: 4px;
 }
 
-#rkpaikqsvc .gt_column_spanner_outer:first-child {
+#wpberopepe .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rkpaikqsvc .gt_column_spanner_outer:last-child {
+#wpberopepe .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rkpaikqsvc .gt_column_spanner {
+#wpberopepe .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -201,7 +184,7 @@ class: center, middle, inverse, title-slide
   width: 100%;
 }
 
-#rkpaikqsvc .gt_group_heading {
+#wpberopepe .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -226,7 +209,7 @@ class: center, middle, inverse, title-slide
   vertical-align: middle;
 }
 
-#rkpaikqsvc .gt_empty_group_heading {
+#wpberopepe .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -241,15 +224,15 @@ class: center, middle, inverse, title-slide
   vertical-align: middle;
 }
 
-#rkpaikqsvc .gt_from_md > :first-child {
+#wpberopepe .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rkpaikqsvc .gt_from_md > :last-child {
+#wpberopepe .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rkpaikqsvc .gt_row {
+#wpberopepe .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -268,7 +251,7 @@ class: center, middle, inverse, title-slide
   overflow-x: hidden;
 }
 
-#rkpaikqsvc .gt_stub {
+#wpberopepe .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -281,7 +264,7 @@ class: center, middle, inverse, title-slide
   padding-right: 5px;
 }
 
-#rkpaikqsvc .gt_stub_row_group {
+#wpberopepe .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -295,11 +278,11 @@ class: center, middle, inverse, title-slide
   vertical-align: top;
 }
 
-#rkpaikqsvc .gt_row_group_first td {
+#wpberopepe .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rkpaikqsvc .gt_summary_row {
+#wpberopepe .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -309,16 +292,16 @@ class: center, middle, inverse, title-slide
   padding-right: 5px;
 }
 
-#rkpaikqsvc .gt_first_summary_row {
+#wpberopepe .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rkpaikqsvc .gt_first_summary_row.thick {
+#wpberopepe .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rkpaikqsvc .gt_last_summary_row {
+#wpberopepe .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -328,7 +311,7 @@ class: center, middle, inverse, title-slide
   border-bottom-color: #D3D3D3;
 }
 
-#rkpaikqsvc .gt_grand_summary_row {
+#wpberopepe .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -338,7 +321,7 @@ class: center, middle, inverse, title-slide
   padding-right: 5px;
 }
 
-#rkpaikqsvc .gt_first_grand_summary_row {
+#wpberopepe .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -348,11 +331,11 @@ class: center, middle, inverse, title-slide
   border-top-color: #D3D3D3;
 }
 
-#rkpaikqsvc .gt_striped {
+#wpberopepe .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rkpaikqsvc .gt_table_body {
+#wpberopepe .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -361,7 +344,7 @@ class: center, middle, inverse, title-slide
   border-bottom-color: #D3D3D3;
 }
 
-#rkpaikqsvc .gt_footnotes {
+#wpberopepe .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -375,7 +358,7 @@ class: center, middle, inverse, title-slide
   border-right-color: #D3D3D3;
 }
 
-#rkpaikqsvc .gt_footnote {
+#wpberopepe .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -384,7 +367,7 @@ class: center, middle, inverse, title-slide
   padding-right: 5px;
 }
 
-#rkpaikqsvc .gt_sourcenotes {
+#wpberopepe .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -398,7 +381,7 @@ class: center, middle, inverse, title-slide
   border-right-color: #D3D3D3;
 }
 
-#rkpaikqsvc .gt_sourcenote {
+#wpberopepe .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -406,36 +389,36 @@ class: center, middle, inverse, title-slide
   padding-right: 5px;
 }
 
-#rkpaikqsvc .gt_left {
+#wpberopepe .gt_left {
   text-align: left;
 }
 
-#rkpaikqsvc .gt_center {
+#wpberopepe .gt_center {
   text-align: center;
 }
 
-#rkpaikqsvc .gt_right {
+#wpberopepe .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rkpaikqsvc .gt_font_normal {
+#wpberopepe .gt_font_normal {
   font-weight: normal;
 }
 
-#rkpaikqsvc .gt_font_bold {
+#wpberopepe .gt_font_bold {
   font-weight: bold;
 }
 
-#rkpaikqsvc .gt_font_italic {
+#wpberopepe .gt_font_italic {
   font-style: italic;
 }
 
-#rkpaikqsvc .gt_super {
+#wpberopepe .gt_super {
   font-size: 65%;
 }
 
-#rkpaikqsvc .gt_two_val_uncert {
+#wpberopepe .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -444,31 +427,31 @@ class: center, middle, inverse, title-slide
   margin-left: 0.1em;
 }
 
-#rkpaikqsvc .gt_footnote_marks {
+#wpberopepe .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#rkpaikqsvc .gt_asterisk {
+#wpberopepe .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rkpaikqsvc .gt_slash_mark {
+#wpberopepe .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#rkpaikqsvc .gt_fraction_numerator {
+#wpberopepe .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#rkpaikqsvc .gt_fraction_denominator {
+#wpberopepe .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -483,12 +466,11 @@ class: center, middle, inverse, title-slide
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">surface</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">winner_name</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">loser_name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">winner_rank</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">w_ace</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">w_df</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">w_bpSaved</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">w_bpFaced</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">w_1stIn</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">w_1stWon</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
@@ -497,56 +479,51 @@ class: center, middle, inverse, title-slide
 <td class="gt_row gt_left">Hard</td>
 <td class="gt_row gt_left">Garbine Muguruza</td>
 <td class="gt_row gt_left">Stefanie Voegele</td>
+<td class="gt_row gt_right">13</td>
 <td class="gt_row gt_right">7</td>
 <td class="gt_row gt_right">0</td>
 <td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">31</td>
-<td class="gt_row gt_right">28</td></tr>
+<td class="gt_row gt_right">31</td></tr>
     <tr><td class="gt_row gt_left">Luxembourg</td>
 <td class="gt_row gt_right">20181015</td>
 <td class="gt_row gt_left">Hard</td>
 <td class="gt_row gt_left">Dayana Yastremska</td>
 <td class="gt_row gt_left">Varvara Lepchenko</td>
+<td class="gt_row gt_right">66</td>
 <td class="gt_row gt_right">3</td>
 <td class="gt_row gt_right">9</td>
 <td class="gt_row gt_right">6</td>
-<td class="gt_row gt_right">9</td>
-<td class="gt_row gt_right">75</td>
-<td class="gt_row gt_right">51</td></tr>
+<td class="gt_row gt_right">75</td></tr>
     <tr><td class="gt_row gt_left">Luxembourg</td>
 <td class="gt_row gt_right">20181015</td>
 <td class="gt_row gt_left">Hard</td>
 <td class="gt_row gt_left">Dalila Jakupovic</td>
 <td class="gt_row gt_left">Kateryna Kozlova</td>
+<td class="gt_row gt_right">79</td>
 <td class="gt_row gt_right">4</td>
 <td class="gt_row gt_right">6</td>
 <td class="gt_row gt_right">7</td>
-<td class="gt_row gt_right">12</td>
-<td class="gt_row gt_right">65</td>
-<td class="gt_row gt_right">41</td></tr>
+<td class="gt_row gt_right">65</td></tr>
     <tr><td class="gt_row gt_left">Luxembourg</td>
 <td class="gt_row gt_right">20181015</td>
 <td class="gt_row gt_left">Hard</td>
 <td class="gt_row gt_left">Margarita Gasparyan</td>
 <td class="gt_row gt_left">Maria Sakkari</td>
+<td class="gt_row gt_right">124</td>
 <td class="gt_row gt_right">1</td>
 <td class="gt_row gt_right">3</td>
 <td class="gt_row gt_right">5</td>
-<td class="gt_row gt_right">7</td>
-<td class="gt_row gt_right">39</td>
-<td class="gt_row gt_right">29</td></tr>
+<td class="gt_row gt_right">39</td></tr>
     <tr><td class="gt_row gt_left">Luxembourg</td>
 <td class="gt_row gt_right">20181015</td>
 <td class="gt_row gt_left">Hard</td>
 <td class="gt_row gt_left">Kirsten Flipkens</td>
 <td class="gt_row gt_left">Mandy Minella</td>
+<td class="gt_row gt_right">52</td>
 <td class="gt_row gt_right">6</td>
 <td class="gt_row gt_right">2</td>
 <td class="gt_row gt_right">4</td>
-<td class="gt_row gt_right">5</td>
-<td class="gt_row gt_right">35</td>
-<td class="gt_row gt_right">27</td></tr>
+<td class="gt_row gt_right">35</td></tr>
   </tbody>
   
   
@@ -557,7 +534,7 @@ class: center, middle, inverse, title-slide
 
 ## Data Transformations
 
-- Created two datasets using original `wta` dataset
+- Created three datasets using original `wta` dataset
 
 --
 
@@ -567,496 +544,98 @@ class: center, middle, inverse, title-slide
 
   2. `player_serve_stats`: aggregated data of each player's cumulative statistics across all matches
 
+--
+
+  3. `final_minutes`: contains each tournament finalist and the minutes played prior to the final
+  
+--
+
+- New Variables:
+  
+  - Number of sets
+  
+  - Winning Percentage
+  
+  - Minutes played leading up to a tournament final
+  
+  - Difference in minutes played between the two finalists prior to the final 
 
 ---
 
-## Break Points (CHANGE TITLE)
+## &lt;center&gt; Winning players face fewer break points and save break points at better rates &lt;/center&gt;
 
 &lt;img src="EDA-Presentation-WTA_files/figure-html/unnamed-chunk-2-1.png" width="100%" /&gt;
 
-
 ---
 
-Text can be **bold**, _italic_, ~~strikethrough~~, or `inline code`.
-
-[Link to another slide](#colors).
-
-### Lorem Ipsum
-
-Dolor imperdiet nostra sapien scelerisque praesent curae metus facilisis dignissim tortor. 
-Lacinia neque mollis nascetur neque urna velit bibendum. 
-Himenaeos suspendisse leo varius mus risus sagittis aliquet venenatis duis nec.
-
-- Dolor cubilia nostra nunc sodales
-
-- Consectetur aliquet mauris blandit
-
-- Ipsum dis nec porttitor urna sed
-
----
-name: colors
-
-## Colors
-
-.left-column[
-Text color
-
-[Link Color](#3)
-
-**Bold Color**
-
-_Italic Color_
-
-`Inline Code`
-]
-
-.right-column[
-Lorem ipsum dolor sit amet, [consectetur adipiscing elit (link)](#3), 
-sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Erat nam at lectus urna.
-Pellentesque elit ullamcorper **dignissim cras tincidunt (bold)** lobortis feugiat. 
-_Eros donec ac odio tempor_ orci dapibus ultrices. 
-Id porta nibh venenatis cras sed felis eget velit aliquet.
-Aliquam id diam maecenas ultricies mi.
-Enim sit amet 
-`code_color("inline")`
-venenatis urna cursus eget nunc scelerisque viverra.
-]
-
----
-
-# Big Topic or Inverse Slides `#`
-
-## Slide Headings `##`
-
-### Sub-slide Headings `###`
-
-#### Bold Call-Out `####`
-
-This is a normal paragraph text. Only use header levels 1-4.
-
-##### Possible, but not recommended `#####`
-
-###### Definitely don't use h6 `######`
-
----
-
-# Left-Column Headings
-
-.left-column[
-## First
-
-## Second
-
-## Third
-]
-
-.right-column[
-Dolor quis aptent mus a dictum ultricies egestas.
-
-Amet egestas neque tempor fermentum proin massa!
-
-Dolor elementum fermentum pharetra lectus arcu pulvinar.
-]
-
----
-class: inverse center middle
-
-# Topic Changing Interstitial
+### Failing first serve results in worse point winning percentage
+- 3 possible outcomes of serving: first serve in, second serve in, double faults
 
 --
 
-```
-class: inverse center middle
-```
+&lt;img src="EDA-Presentation-WTA_files/figure-html/unnamed-chunk-3-1.png" width="100%" /&gt;
 
----
-layout: true
-
-## Blocks
 
 ---
 
-### Blockquote
+## &lt;center&gt; Players with a substantial Minutes Played advantage are favored in the finals &lt;/center&gt;
 
-&gt; This is a blockquote following a header.
-&gt;
-&gt; When something is important enough, you do it even if the odds are not in your favor.
-
----
-
-### Code Blocks
-
-#### R Code
-
-
-```r
-ggplot(gapminder) +
-  aes(x = gdpPercap, y = lifeExp, size = pop, color = country) +
-  geom_point() +
-  facet_wrap(~year)
-```
-
-#### JavaScript
-
-```js
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
-```
-
----
-
-### More R Code
-
-
-```r
-dplyr::starwars %&gt;% dplyr::slice_sample(n = 4)
-```
+&lt;img src="EDA-Presentation-WTA_files/figure-html/unnamed-chunk-4-1.png" width="100%" /&gt;
 
 ---
 
 
-```r
-cli::cli_alert_success("It worked!")
-```
 
-```
-## ✔ It worked!
-```
+## &lt;center&gt; Minimax clustering was performed to analyze serve aggression &lt;/center&gt;
+
+- Variables of interest were standardized: **aces** and **double faults**
+
+- Minimum of 50 matches required
+
+- k = 4 clusters chosen using:
+  - **Dendrogram:** less than 4 clusters `\(\rightarrow\)` large gap in dissimilarity between clusters 
+
+--
+  - **Context:** it was hypothesized that there are 4 categories of service players: 
+
+      1. High aces, low double faults (best combination)
+      2. High aces, high double faults (aggressive)
+      3. Low aces, low double faults (conservative)
+      4. Low aces, high double faults (worst combination)
+      
+- **Minimax** was chosen to identify cluster prototypes
+
+
+---
+
+## &lt;center&gt;Minimax clustering reveals a small cluster of elite players&lt;/center&gt;
+
+&lt;img src="EDA-Presentation-WTA_files/figure-html/unnamed-chunk-5-1.png" width="100%" /&gt;
+
+---
+
+## Conclusions
+
+1. Winning players faced fewer break points AND saved them at greater rates
+
+2. Faulting on a first serve leads to a considerable drop in point winning percentage
+
+3. Tournament finalists who have a 100+ minute advantage entering the final fare much better in the final match 
 
 --
 
+## Limitations
 
-```r
-message("Just a friendly message")
-```
+1. Only 221 tournaments included in the dataset, and only ~60 have a minute differential greater than a 100 minutes  
 
-```
-## Just a friendly message
-```
-
---
-
-
-```r
-warning("This could be bad...")
-```
-
-```
-## Warning: This could be bad...
-```
-
---
-
-
-```r
-stop("I hope you're sitting down for this")
-```
-
-```
-## Error in eval(expr, envir, enclos): I hope you're sitting down for this
-```
+2. Lack of advanced tracking data (e.g. serve velocity, distance covered in a match)
 
 
 ---
-layout: true
 
-## Tables
+## &lt;center&gt;Complete linkage leads to a wide cluster of elite players&lt;/center&gt;
 
----
-exclude: false
-
-
-```r
-tibble::as_tibble(mtcars)
-```
-
-```
-## # A tibble: 32 × 11
-##      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
-##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1  21       6  160    110  3.9   2.62  16.5     0     1     4     4
-##  2  21       6  160    110  3.9   2.88  17.0     0     1     4     4
-##  3  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
-##  4  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
-##  5  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
-##  6  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
-##  7  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
-##  8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
-##  9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
-## 10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
-## # … with 22 more rows
-```
-
----
-
-
-```r
-knitr::kable(head(mtcars), format = 'html')
-```
-
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; mpg &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; cyl &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; disp &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; hp &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; drat &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; wt &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; qsec &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; vs &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; am &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; gear &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; carb &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Mazda RX4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 21.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 160 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 110 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.90 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2.620 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 16.46 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Mazda RX4 Wag &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 21.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 160 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 110 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.90 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2.875 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 17.02 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Datsun 710 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 22.8 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 108 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 93 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.85 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2.320 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 18.61 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Hornet 4 Drive &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 21.4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 258 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 110 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.08 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.215 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 19.44 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Hornet Sportabout &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 18.7 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 360 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 175 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.15 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.440 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 17.02 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Valiant &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 18.1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 225 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 105 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2.76 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.460 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 20.22 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
----
-exclude: false
-
-
-```r
-DT::datatable(head(mtcars), fillContainer = FALSE, options = list(pageLength = 4))
-```
-
-<div id="htmlwidget-6d28b1f398e449a07f2e" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6d28b1f398e449a07f2e">{"x":{"filter":"none","vertical":false,"fillContainer":false,"data":[["Mazda RX4","Mazda RX4 Wag","Datsun 710","Hornet 4 Drive","Hornet Sportabout","Valiant"],[21,21,22.8,21.4,18.7,18.1],[6,6,4,6,8,6],[160,160,108,258,360,225],[110,110,93,110,175,105],[3.9,3.9,3.85,3.08,3.15,2.76],[2.62,2.875,2.32,3.215,3.44,3.46],[16.46,17.02,18.61,19.44,17.02,20.22],[0,0,1,1,0,1],[1,1,1,0,0,0],[4,4,4,3,3,3],[4,4,1,1,2,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>mpg<\/th>\n      <th>cyl<\/th>\n      <th>disp<\/th>\n      <th>hp<\/th>\n      <th>drat<\/th>\n      <th>wt<\/th>\n      <th>qsec<\/th>\n      <th>vs<\/th>\n      <th>am<\/th>\n      <th>gear<\/th>\n      <th>carb<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":4,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9,10,11]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[4,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
-
----
-layout: true
-
-## Lists
-
----
-
-.pull-left[
-#### Here is an unordered list:
-
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
-]
-
-.pull-right[
-
-#### And an ordered list:
-
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
-]
-
----
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
----
-
-### Nesting an ol in ul in an ol
-
-- level 1 item (ul)
-  1. level 2 item (ol)
-  1. level 2 item (ol)
-    - level 3 item (ul)
-    - level 3 item (ul)
-- level 1 item (ul)
-  1. level 2 item (ol)
-  1. level 2 item (ol)
-    - level 3 item (ul)
-    - level 3 item (ul)
-  1. level 4 item (ol)
-  1. level 4 item (ol)
-    - level 3 item (ul)
-    - level 3 item (ul)
-- level 1 item (ul)
-
----
-layout: true
-
-## Plots
-
----
-
-
-```r
-library(ggplot2)
-(g &lt;- ggplot(mpg) + aes(hwy, cty, color = class) + geom_point())
-```
-
-&lt;img src="EDA-Presentation-WTA_files/figure-html/plot-example-1.png" width="100%" /&gt;
-
----
-
-
-```r
-g + xaringanthemer::theme_xaringan(text_font_size = 16, title_font_size = 18) +
-  ggtitle("A Plot About Cars")
-```
-
-.footnote[Requires `{showtext}`]
-
----
-layout: false
-
-## Square image
-
-&lt;center&gt;&lt;img src="https://octodex.github.com/images/labtocat.png" alt="GithHub Octocat" height="400px" /&gt;&lt;/center&gt;
-
-.footnote[GitHub Octocat]
-
----
-
-### Wide image
-
-![A wide image with a diagram of branching in git.](https://docs.github.com/assets/images/help/repository/branching.png)
-
-.footnote[Wide images scale to 100% slide width]
-
----
-
-## Two images
-
-.pull-left[
-![A GitHub Octocat, style "mother hubber"](https://octodex.github.com/images/motherhubbertocat.png)
-]
-
-.pull-right[
-![A GitHub Octocat, style "dinotcat"](https://octodex.github.com/images/dinotocat.png)
-]
-
----
-
-### Definition lists can be used with HTML syntax.
-
-&lt;dl&gt;
-&lt;dt&gt;Name&lt;/dt&gt;
-&lt;dd&gt;Godzilla&lt;/dd&gt;
-&lt;dt&gt;Born&lt;/dt&gt;
-&lt;dd&gt;1952&lt;/dd&gt;
-&lt;dt&gt;Birthplace&lt;/dt&gt;
-&lt;dd&gt;Japan&lt;/dd&gt;
-&lt;dt&gt;Color&lt;/dt&gt;
-&lt;dd&gt;Green&lt;/dd&gt;
-&lt;/dl&gt;
-
----
-class: center, middle
-
-# Thanks!
-
-Slides created via the R packages:
-
-[**xaringan**](https://github.com/yihui/xaringan)&lt;br&gt;
-[gadenbuie/xaringanthemer](https://github.com/gadenbuie/xaringanthemer)
-
-The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
+&lt;img src="EDA-Presentation-WTA_files/figure-html/unnamed-chunk-6-1.png" width="100%" /&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
@@ -1065,7 +644,7 @@ The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihu
 "highlightStyle": "github",
 "highlightLines": true,
 "ratio": "16:9",
-"countIncrementalSlides": true
+"countIncrementalSlides": false
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

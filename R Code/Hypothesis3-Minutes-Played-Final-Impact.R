@@ -41,6 +41,8 @@ final_minutes <- wta%>%
   select(winner_name, loser_name, winner_tot_minutes, loser_tot_minutes, tourney_id, surface, abs_minute_diff)
 
 
+
+
 final_minutes%>%
   mutate(minute_diff = winner_tot_minutes - loser_tot_minutes)%>%
   filter(abs(minute_diff) < 1000)%>%
@@ -69,6 +71,8 @@ final_minutes <- final_minutes%>%
                                     "100-149",
                                     "150+"))
 
+
+write_csv(final_minutes, "Data/final_minutes.csv")
 
 # Official Visualization for Hypothesis 3 ---------------------------------
 
