@@ -66,13 +66,22 @@ final_minutes <- read_csv("../Data/final_minutes.csv")
 - **Key Variables**
   - Tournament / Match Information: name, date, location, surface
   - Player Information: seed, ranking, height
-  - Match statistics: aces, double faults, other service statistics
+  - Match statistics: aces, double faults, other serve statistics
 
 <!-- - **Key match variables**: tourney_name, tourney_date, surface -->
 
 ```{r, echo = FALSE}
 wta%>%
-  select(tourney_name,tourney_date, surface, winner_name, loser_name, winner_rank, w_ace, w_df, w_bpSaved, w_1stIn)%>%
+  select(tourney_name,tourney_date, surface, winner_name, loser_name, winner_rank, w_ace, w_bpSaved, w_1stIn)%>%
+  rename(`Tourney Name` = "tourney_name",
+         `Tourney Date` = "tourney_date",
+         Surface = "surface",
+         `Winner Name` = "winner_name",
+         `Loser Name` = "loser_name",
+         `Winner Rank` = "winner_rank",
+         `Winner Ace` = "w_ace",
+         `Winner BP Saved` = "w_bpSaved",
+         `Winner 1st In` = "w_1stIn")%>%
   head(n = 5)%>%
   gt()
 # DT::datatable(fillContainer = FALSE, options = list(pageLength = 4))
